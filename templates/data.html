@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="./static/lib/css//bootstrap.min.css">
+  <link rel="stylesheet" href="./static/lib/css/keen-dashboards.css">
+  <link rel="stylesheet" href="./static/lib/css/dc.min.css">
+  <link rel="stylesheet" href="./static/lib/css/leaflet.css">
+  <link rel="stylesheet" href="./static/lib/css/jquery.dataTables.css">
+  <link rel="stylesheet" href="./static/lib/css/custom.css">
+  
+  
+
+
+</head>
+<body class="application">
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" style="font-size:25px;" href="./">Toronto Bike Theft Visualization</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+      <!-- Map -->  
+      <!-- <div class="col-sm-12">  -->
+        <!-- <div class="chart-wrapper"> -->
+          <div class="chart-title" style="margin-bottom: 10px">
+            Heatmap of Thefts
+          </div>
+          <div class="chart-stage">
+            <div id="map" style="width: 1040; height: 400px; margin-left: 50px; margin-right: 50px; margin-bottom: 50px;"></div>
+          </div>
+        <!-- </div> -->
+      <!-- </div> -->
+      <!-- Map -->  
+    </div>
+    <div class="row">
+      <!-- Map -->  
+      <!-- <div class="col-sm-12">  -->
+        <!-- <div class="chart-wrapper"> -->
+          <div class="chart-title">
+            Bikes Stolen Over Time
+          </div>
+          <!-- <div class="chart-stage"> -->
+          <div id="time-chart" style="width: auto; height: auto; margin-left: 50px; margin-right: 50px; margin-bottom: 50px" ></div>
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
+      <!-- Map -->  
+    </div>
+      <div class="row">
+        <div style="width: 1040; height: 400px; margin-left: 50px; margin-right: 50px">
+        <div class="col-sm-2" style="width: 50%;">
+          <p style="width: auto;">
+            Manufacturer
+          </p>
+          <div class="chart-stage">
+            <div id="manufacturer-row-chart"></div>
+          </div>
+        </div>
+        <div class="col-sm-2" style="width: 50%;">
+          <p style="width: auto;">
+            Day of the Week
+          </p>
+          <div class="chart-stage">
+            <div id="gender-row-chart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="dc-data-count dc-chart" style="width: auto; height: auto; margin-left: 50px; margin-right: 50px"></div>
+    </div>
+    <div class="row">
+      <div style="width: 1040; height: 520px; margin-left: 50px; margin-right: 50px">
+        <table class="table table-hover dc-data-table" ></table>
+      </div>
+    </div>
+    <div class = "row">
+      <p>Powered By:</p>
+      <img alt="Bike Index API" src="./static/images/bikeindex_logo.svg" width="100" height="100">
+    </div>
+    
+
+  </div>
+
+  <hr>
+  <p class="small text-muted">Built with &#9829; by <a href="https://keen.io">Keen IO</a></p>
+  <script src="./static/lib/js/jquery.min.js"></script>
+  <script src="./static/lib/js/bootstrap.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="./static/lib/js/crossfilter.min.js"></script>
+  <script type="text/javascript" src="./static/lib/js/dc.min.js"></script>
+  <script type="text/javascript" src="./static/lib/js/datatables.min.js"></script>
+  <script type="text/javascript" src="./static/lib/js/dc.datatables.js"></script>
+  <script type="text/javascript" src="./static/lib/js/queue.js"></script>
+  <script type="text/javascript" src="./static/lib/js/leaflet.js"></script>
+  <script type="text/javascript" src="./static/lib/js/leaflet-heat.js"></script>
+  <script type="text/javascript" src="./static/lib/js/underscore-min.js"></script>
+  <script src='./static/lib/js/charts.js' type='text/javascript'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js" charset="utf-8"></script>
+
+
+</body>
+</html>

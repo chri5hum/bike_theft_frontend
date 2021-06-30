@@ -1,0 +1,22 @@
+#number-records-nd {
+    font-size: 55px;
+}
+
+.dc-chart g.row text {
+    fill: black;
+
+}
+
+.row {
+    text-align:center;
+    margin:0 auto;
+}
+
+.center {
+    text-align:center;
+    margin:0 auto;
+}
+
+.chart-title {
+    font-size: 15px;
+}
