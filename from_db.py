@@ -46,14 +46,16 @@ def postgresql_to_dataframe(conn, select_query, column_names):
     return df
 
 def getEverything():
-    conn = connect(param_dic)
-    fact_columns = ["event_id", "title", "manufacturer_key", "location_key", "date_key", "model", "occurred_at"]
-    manufacturer_columns = ["manufacturer_id", "manufacturer_name", "manufacturer_company_url", "manufacturer_frame_maker", "manufacturer_description", "manufacturer_short_name", "manufacturer_slug"]
-    location_columns = ["location_id", "postal", "city", "country", "lat", "long"]
-    date_columns = ["date_id", "date", "date_us_format", "date_us_short_format", "date_iso_format", "num_year", "num_month_in_year", "num_week_in_year", "num_week_in_month", "num_day_in_year", "num_day_in_month", "num_day_in_week", "name_month_en", "name_month_abbreviated_en", "name_day_en", "name_day_abbreviated_en"]
-    # Execute the "SELECT *" query
-    column_names = fact_columns + manufacturer_columns + location_columns + date_columns
-    df = postgresql_to_dataframe(conn, query, column_names)
-    # print(df.head())
-    conn.close()
+    try:
+        conn = connect(param_dic)
+        fact_columns = ["event_id", "title", "manufacturer_key", "location_key", "date_key", "model", "occurred_at"]
+        manufacturer_columns = ["manufacturer_id", "manufacturer_name", "manufacturer_company_url", "manufacturer_frame_maker", "manufacturer_description", "manufacturer_short_name", "manufacturer_slug"]
+        location_columns = ["location_id", "postal", "city", "country", "lat", "long"]
+        date_columns = ["date_id", "date", "date_us_format", "date_us_short_format", "date_iso_format", "num_year", "num_month_in_year", "num_week_in_year", "num_week_in_month", "num_day_in_year", "num_day_in_month", "num_day_in_week", "name_month_en", "name_month_abbreviated_en", "name_day_en", "name_day_abbreviated_en"]
+        # Execute the "SELECT" query
+        column_names = fact_columns + manufacturer_columns + location_columns + date_columns
+        df = postgresql_to_dataframe(conn, query, column_names)
+        conn.close()
+    except:
+        df = pd.read_csv('./output.csv')
     return df
