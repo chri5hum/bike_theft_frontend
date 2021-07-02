@@ -12,6 +12,14 @@ param_dic = {
     "password"  : os.environ['GCP_VM_PASS']
 }
 
+# nothing = 'nothing'
+# param_dic = {
+#     "host"      : nothing,
+#     "database"  : nothing,
+#     "user"      : nothing,
+#     "password"  : nothing
+# }
+
 def connect(params_dic):
     """ Connect to the PostgreSQL database server """
     conn = None
@@ -57,5 +65,5 @@ def getEverything():
         df = postgresql_to_dataframe(conn, query, column_names)
         conn.close()
     except:
-        df = pd.read_csv('./output.csv')
+        df = pd.read_csv('/data/output.csv')
     return df
