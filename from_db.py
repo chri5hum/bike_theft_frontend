@@ -65,5 +65,5 @@ def getEverything():
         df = postgresql_to_dataframe(conn, query, column_names)
         conn.close()
     except:
-        df = pd.read_csv('./static/data/output.csv')
+        df = pd.read_csv('./static/images/output.csv')
     return df
