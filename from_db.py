@@ -6,20 +6,20 @@ import os
 # query = "SELECT * FROM prod.fact_bike AS x LEFT JOIN prod.dim_manufacturer AS d_m ON x.manufacturer_key = d_m.id LEFT JOIN prod.dim_location AS d_l ON x.location_key = d_l.id LEFT JOIN prod.dim_date AS d_d ON x.date_key = d_d.id;"
 query = "SELECT * FROM prod.fact_bike AS x LEFT JOIN prod.dim_manufacturer AS d_m ON x.manufacturer_key = d_m.id LEFT JOIN prod.dim_location AS d_l ON x.location_key = d_l.id LEFT JOIN prod.dim_date AS d_d ON x.date_key = d_d.id WHERE d_l.lat NOT IN ('NaN');"
 
-# nothing = 'nothing'
-# param_dic = {
-#     "host"      : nothing,
-#     "database"  : nothing,
-#     "user"      : nothing,
-#     "password"  : nothing
-# }
-
+nothing = 'nothing'
 param_dic = {
-    "host"      : os.environ['GCP_VM_IP'],
-    "database"  : os.environ['GCP_VM_DB'],
-    "user"      : os.environ['GCP_VM_USER'],
-    "password"  : os.environ['GCP_VM_PASS']
+    "host"      : nothing,
+    "database"  : nothing,
+    "user"      : nothing,
+    "password"  : nothing
 }
+
+# param_dic = {
+#     "host"      : os.environ['GCP_VM_IP'],
+#     "database"  : os.environ['GCP_VM_DB'],
+#     "user"      : os.environ['GCP_VM_USER'],
+#     "password"  : os.environ['GCP_VM_PASS']
+# }
 
 def connect(params_dic):
     """ Connect to the PostgreSQL database server """
@@ -30,6 +30,7 @@ def connect(params_dic):
         conn = psycopg2.connect(**params_dic)
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
+        raise error
     print("Connection successful")
     return conn
 
@@ -43,6 +44,7 @@ def postgresql_to_dataframe(conn, select_query, column_names):
     except (Exception, psycopg2.DatabaseError) as error:
         print("Error: %s" % error)
         cursor.close()
+        raise error
         return 1
     
     # Naturally we get a list of tupples
