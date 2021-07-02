@@ -99,6 +99,7 @@ function makeGraphs(error, recordsJson) {
         .ordering(function(d) { return -d.value })
         .colors(['#6baed6'])
         .elasticX(true)
+		.rowsCap(10)
         .xAxis().ticks(5);
 
     locationChart
