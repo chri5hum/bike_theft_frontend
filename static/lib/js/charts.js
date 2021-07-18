@@ -6,7 +6,7 @@ function makeGraphs(error, recordsJson) {
     //Clean data
 	var records = recordsJson;
 
-	console.log("records")
+	console.log("records:")
 	console.log(records)
 	var dateFormat = d3.timeParse("%Y-%m-%d");
 

@@ -6,7 +6,7 @@ import os
 # query = "SELECT * FROM prod.fact_bike AS x LEFT JOIN prod.dim_manufacturer AS d_m ON x.manufacturer_key = d_m.id LEFT JOIN prod.dim_location AS d_l ON x.location_key = d_l.id LEFT JOIN prod.dim_date AS d_d ON x.date_key = d_d.id;"
 query = "SELECT * FROM prod.fact_bike AS x LEFT JOIN prod.dim_manufacturer AS d_m ON x.manufacturer_key = d_m.id LEFT JOIN prod.dim_location AS d_l ON x.location_key = d_l.id LEFT JOIN prod.dim_date AS d_d ON x.date_key = d_d.id WHERE d_l.lat NOT IN ('NaN');"
 
-# nothing = 'nothing'
+nothing = 'nothing'
 # param_dic = {
 #     "host"      : nothing,
 #     "database"  : nothing,
@@ -18,7 +18,8 @@ param_dic = {
     "host"      : os.environ['GCP_VM_IP'],
     "database"  : os.environ['GCP_VM_DB'],
     "user"      : os.environ['GCP_VM_USER'],
-    "password"  : os.environ['GCP_VM_PASS']
+    "password"  : os.environ['GCP_VM_PASS'],
+    "connect_timeout": 3
 }
 
 def connect(params_dic):
@@ -29,7 +30,7 @@ def connect(params_dic):
         print('Connecting to the PostgreSQL database...')
         conn = psycopg2.connect(**params_dic)
     except (Exception, psycopg2.DatabaseError) as error:
-        print(error)
+        print("Error: %s" % error)
         raise error
     print("Connection successful")
     return conn
@@ -67,5 +68,6 @@ def getEverything():
         df = postgresql_to_dataframe(conn, query, column_names)
         conn.close()
     except:
+        print('cannot read from db, defaulting to csv')
         df = pd.read_csv('./static/data/output.csv')
     return df
