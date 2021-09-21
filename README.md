@@ -1,10 +1,10 @@
 # bike_theft_frontend
 
+dashboard uses D3.js for visualizations
+
 link to dashboard:
 
 https://bike-theft-frontend.herokuapp.com/
-
-using D3.js
 
 
 
